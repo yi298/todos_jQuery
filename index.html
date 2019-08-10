@@ -1,60 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>todos-jQuery</title>
+    <link
+      href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>todos-jQuery</title>
-  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/index.css">
-</head>
+  <body>
+    <!-- 输入栏 -->
+    <div class="todoBox">
+      <!-- <input id="todo" type="text" placeholder="请输入..."></input> -->
+      <button id="todoBtn" type="button" name="button">提交</button>
+    </div>
+    <!-- 输入栏 结束 -->
 
-<body>
-  <!-- 输入栏 -->
-  <div class="todoBox">
-    <!-- <input id="todo" type="text" placeholder="请输入..."></input> -->
-    <button id="todoBtn" type="button" name="button">提交</button>
-  </div>
-  <!-- 输入栏 结束 -->
-
-  <!-- 点击li模态框 -->
-  <div class="modal fade message" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="gridSystemModalLabel">新任务</h4>
+    <!-- 点击li模态框 -->
+    <div
+      class="modal fade message"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="gridSystemModalLabel"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="gridSystemModalLabel">新任务</h4>
+          </div>
+          <div class="modal-body">
+            弹框内容
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              取消
+            </button>
+            <button type="button" class="btn btn-primary" id="confirm">
+              确认
+            </button>
+          </div>
         </div>
-        <div class="modal-body">
-          弹框内容
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" id="confirm">确认</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-  <!-- 输入栏模态框 结束 -->
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- 点击li模态框 结束 -->
 
-  <!-- 内容栏 -->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <ul class="list-group" id="todoes">
-          <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-          <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
-          <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-        </ul>
+    <!-- 内容栏 -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="list-group" id="todoes">
+            <li class="list-group-item list-group-item-success">
+              Dapibus ac facilisis in
+            </li>
+            <li class="list-group-item list-group-item-info">
+              Cras sit amet nibh libero
+            </li>
+            <li class="list-group-item">
+              Porta ac consectetur ac
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- 内容栏 结束 -->
+    <!-- 内容栏 结束 -->
 
-</body>
-<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-
+    <!-- 输入内容模态框 -->
+    <div
+      class="modal fade todo"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="exampleModalLabel">新内容</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="message-text" class="control-label">内容:</label>
+              <input type="text" class="form-control" id="todo" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              取消
+            </button>
+            <button type="button" class="btn btn-primary" id="addTodo">添加内容</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 输入内容模态框 结束 -->
+  </body>
+  <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 </html>
